@@ -3,8 +3,6 @@ import tensorflow as tf
 import tensorflow.contrib.slim.python.slim.nets.vgg as vgg
 from scipy.optimize import minimize
 
-import vgg19
-
 path_to_vgg19 = "vgg_19.ckpt"  # Download from http://download.tensorflow.org/models/vgg_19_2016_08_28.tar.gz
 
 STYLE_LAYERS = {'vgg_19/conv1/conv1_2/BiasAdd:0': 5e+2, #Name of layer with associated weight
