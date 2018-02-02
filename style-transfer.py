@@ -57,7 +57,6 @@ def transferStyle(content_image, style_image, tv_loss = 10, content_loss = 0.000
 
 
 if __name__ == "__main__":
-    # transferStyle(content_image="Marilyn_512.png", style_image="rain_princess.png")
-    transferStyle(content_image="Marilyn_512.png", style_image="rain.jpg")
+    transferStyle(content_image="content_image.png", style_image="style_image.jpg")
 
 
