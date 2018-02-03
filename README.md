@@ -22,10 +22,15 @@ This is an efficient, high quality implementation of [neural style transfer](htt
 
 ## Examples
 Using the following image as the style image:
+
 ![Style image](style_image.jpg)
+
 And this one as the content image:
+
 ![Content image](content_image.png)
+
 Produces:
+
 ![Result](result.png)
 
 ## Additional style transfer tweaks used
