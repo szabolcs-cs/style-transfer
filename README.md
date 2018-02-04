@@ -60,15 +60,13 @@ This results in a more consistent representation of style
 ![With feature gradients](result_withgrad.png)
 
 ## Balancing style gradients during minimization
-One problem with the original minimization goal as defined for style transfer is that the relative magnitude of gradients of the style loss can change signicifantly during optimization. This is combated by simply minimizing the sum of the logarithms of the style loss for each layer.
+The original style loss as defined in ![Gatys et. al.](https://arxiv.org/abs/1508.06576) is defined as follows:
 
-$Y=F(X)$
+![\mathcal{L}_{style}(\vec{a},\vec{x})=\sum_{l=0}^{L}w_lE_l](https://latex.codecogs.com/gif.latex?%5Cmathcal%7BL%7D_%7Bstyle%7D%28%5Cvec%7Ba%7D%2C%5Cvec%7Bx%7D%29%3D%5Csum_%7Bl%3D0%7D%5E%7BL%7Dw_lE_l)
 
-$ \sum_{\forall i}{x_i^{2}} $
+One problem with this function is that the relative magnitude of gradients of the style loss from each activation layer can change signicifantly during optimization. This is combated by instead minimizing the sum of the logarithms of the style loss for each layer:
 
-![\Large x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}](https://latex.codecogs.com/svg.latex?x%3D%5Cfrac%7B-b%5Cpm%5Csqrt%7Bb%5E2-4ac%7D%7D%7B2a%7D)
-
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}" title="\Large x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}" />
+![\mathcal{L}_{style}(\vec{a},\vec{x})=\sum_{l=0}^{L}w_l\log(E_l)](https://latex.codecogs.com/gif.latex?%5Cmathcal%7BL%7D_%7Bstyle%7D%28%5Cvec%7Ba%7D%2C%5Cvec%7Bx%7D%29%3D%5Csum_%7Bl%3D0%7D%5E%7BL%7Dw_l%5Clog%28E_l%29)
 
 
 ## Troubleshooting, tips and tricks
