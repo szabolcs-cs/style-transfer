@@ -62,11 +62,11 @@ This results in a more consistent representation of style
 ## Balancing style gradients during minimization
 The original style loss in ![Gatys et. al.](https://arxiv.org/abs/1508.06576) is defined as follows:
 
-![\mathcal{L}_{style}(\vec{a},\vec{x})=\sum_{l=0}^{L}w_lE_l](https://latex.codecogs.com/gif.latex?%5Cmathcal%7BL%7D_%7Bstyle%7D%28%5Cvec%7Ba%7D%2C%5Cvec%7Bx%7D%29%3D%5Csum_%7Bl%3D0%7D%5E%7BL%7Dw_lE_l)
+![\mathcal{L}_{style}(\vec{a},\vec{x})=\sum_{l=0}^{L}w_lE_l](https://latex.codecogs.com/gif.latex?%5Cdpi%7B150%7D%20%5Csmall%20%5Cmathcal%7BL%7D_%7Bstyle%7D%28%5Cvec%7Ba%7D%2C%5Cvec%7Bx%7D%29%3D%5Csum_%7Bl%3D0%7D%5E%7BL%7Dw_lE_l)
 
 One problem with this function is that the relative magnitude of gradients of the style loss from each activation layer can change signicifantly during optimization. This is combated by instead minimizing the sum of the logarithms of the style loss for each layer:
 
-![\mathcal{L}_{style}(\vec{a},\vec{x})=\sum_{l=0}^{L}w_l\log(1+E_l)](https://latex.codecogs.com/gif.latex?%5Cmathcal%7BL%7D_%7Bstyle%7D%28%5Cvec%7Ba%7D%2C%5Cvec%7Bx%7D%29%3D%5Csum_%7Bl%3D0%7D%5E%7BL%7Dw_l%5Clog%281&plus;E_l%29)
+![\mathcal{L}_{style}(\vec{a},\vec{x})=\sum_{l=0}^{L}w_l\log(1+E_l)](https://latex.codecogs.com/gif.latex?%5Cdpi%7B150%7D%20%5Csmall%20%5Cmathcal%7BL%7D_%7Bstyle%7D%28%5Cvec%7Ba%7D%2C%5Cvec%7Bx%7D%29%3D%5Csum_%7Bl%3D0%7D%5E%7BL%7Dw_l%5Clog%281&plus;E_l%29)
 
 
 ## Troubleshooting, tips and tricks
