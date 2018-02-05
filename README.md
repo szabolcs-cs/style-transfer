@@ -88,9 +88,9 @@ Produces:
 
 ### Transferring style
 
-In the following example all but the style loss have been turned off. The result is an almost perfect reproduction of the style image, only from the (enhanced) Gram matrix:
+In the following example all but the style loss have been turned off. The result is a close reproduction of the style image, only from the (enhanced) Gram matrix:
 
-![Content image](content_image_224.png)![Style image](style_image_224.png)![Result](result.gif)
+![Content image](content_image_224.png)  ![Style image](style_image_224.png)  ![Result](result.gif)
 
 ## Troubleshooting, tips and tricks
 * If you get an "out of memory" error message try to reduce the resolution of the content image
