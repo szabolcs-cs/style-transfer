@@ -20,19 +20,6 @@ This is an efficient, high quality implementation of [neural style transfer](htt
 * The ```maxiter``` parameter of the optimizer controls the maximum number of iterations to run. More iterations generally mean higher quality. For best results set this to a high number (e.g. 50000) and let the optimizer run until convergence (which should happen before 50000 iterations are reached)
 * The ```maxcor``` parameter controls the amount of information tracked by the L-BFGS optimizer about the curvature of the function being minimized. A higher number should mean a higher quality output, but also results in slower iteration time (The optimizer runs on the CPU)
 
-## Examples
-Using the following image as the style image:
-
-![Style image](style_image.jpg)
-
-And this one as the content image:
-
-![Content image](content_image.png)
-
-Produces:
-
-![Result](result.png)
-
 ## Additional style transfer tweaks used
 * Added total variation loss used in some other implementations
 * Added *x* and *y* gradients of feature maps to Gram matrix generation for richer style representation
@@ -79,6 +66,31 @@ The original paper proposes the following normalization of the Gram matrix:
 This seems to have problems when the dimensions of the style and content images significantly differs. To make the Gram matrix resolution-invariant the following normalization is used, where ||G||<sub>F</sub> is the [Frobenius norm](https://en.wikipedia.org/wiki/Matrix_norm#Frobenius_norm) of G:
 
 ![E_l=\sum_{i,j} \left (\frac{G_{ij}}{\left \| G \right \|_F}-\frac{A_{ij}}{\left \| A \right \|_F}  \right )^2](https://latex.codecogs.com/gif.latex?%5Cdpi%7B150%7D%20%5Csmall%20E_l%3D%5Csum_%7Bi%2Cj%7D%20%5Cleft%20%28%5Cfrac%7BG_%7Bij%7D%7D%7B%5Cleft%20%5C%7C%20G%20%5Cright%20%5C%7C_F%7D-%5Cfrac%7BA_%7Bij%7D%7D%7B%5Cleft%20%5C%7C%20A%20%5Cright%20%5C%7C_F%7D%20%5Cright%20%29%5E2)
+
+## Examples
+Using the following image as the style image:
+
+<p align="center">
+  <img src="style_image.jpg" width="512"/>
+</p>
+
+And this one as the content image:
+
+<p align="center">
+  <img src="content_image.png"/>
+</p>
+
+Produces:
+
+<p align="center">
+  <img src="result.png"/>
+</p>
+
+### Transferring style
+
+In the following example all but the style loss have been turned off. The result is an almost perfect reproduction of the style image, only from the (enhanced) Gram matrix:
+
+![Content image](content_image_224.png)![Style image](style_image_224.png)![Result](result.gif)
 
 ## Troubleshooting, tips and tricks
 * If you get an "out of memory" error message try to reduce the resolution of the content image
