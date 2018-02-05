@@ -13,7 +13,7 @@ STYLE_LAYERS = {'vgg_19/conv1/conv1_2/BiasAdd:0': 5e+2, #Name of layer with asso
 CONTENT_LAYER = 'vgg_19/conv4/conv4_2/BiasAdd:0'
 
 minfn_args = {"method": "L-BFGS-B", "jac": True, "bounds": [[0, 255]], #options for the minimizer
-              "options": {"maxcor": 8, "maxiter": 512, "disp": True}}
+              "options": {"factr":0, "ftol": 0,"gtol": 1e-07, "maxcor": 64, "maxiter": 16384, "disp": True}}
 
 
 def getLayer(L): 
@@ -38,7 +38,7 @@ def transferStyle(content_image, style_image, tv_loss = 10, content_loss = 0.000
         grams_in_[layer] = tf.placeholder(tf.float32, shape=grams_[layer].get_shape())  # gram matrices imported here
         grams_[layer] /= 1e-6 * tf.sqrt(tf.reduce_sum(tf.square(grams_[layer])))  # Normalize gram matrix (multiplication for numerical stability)
         diff = grams_[layer] - grams_in_[layer]  # style difference for this style layer
-        loss += STYLE_LAYERS[layer] * tf.log(1 + tf.reduce_mean(tf.square(diff)))  # accumulate style loss, use log to balance gradients
+        loss += STYLE_LAYERS[layer] * tf.log(10000 + tf.reduce_mean(tf.square(diff)))  # accumulate style loss, use log to balance gradients
     loss = tf.to_double(loss) #loss read from here
     image_grad_ = tf.to_double(tf.contrib.layers.flatten(tf.gradients(loss, image_)))  # gradients of the loss read from here
     with tf.Session() as sess:
