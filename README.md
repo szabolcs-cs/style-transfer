@@ -22,9 +22,9 @@ This is an efficient, high quality implementation of [neural style transfer](htt
 
 ## Additional style transfer tweaks used
 * Added total variation loss used in some other implementations
+* As the ReLU activation sets negative values to zero, the inputs of the ReLUs were used to construct the Gram matrix
 * Added *x* and *y* gradients of feature maps to Gram matrix generation for richer style representation
 * More equal balancing of style loss gradients
-Details below:
 
 ### Effects of feature gradients on style representations
 It's possible to make style representations obtaned from the style image richer by also including the horizontal and vertical gradients of the activation tensors in the Gram matrix. The following line reads in the activation tensor:
@@ -91,6 +91,21 @@ Produces:
 In the following example all but the style loss have been turned off. The result is a close reproduction of the style image, only from the (enhanced) Gram matrix:
 
 ![Content image](content_image_224.png)  ![Style image](style_image_224.png)  ![Result](result.gif)
+
+### Starting from "sketch"
+
+Using a classic Van Gogh painting:
+<p align="center">
+  <img src="starry-night.png" width="512"/>
+</p>
+And a simple sketch:
+<p align="center">
+  <img src="example.png"/>
+</p>
+Produces a good reconstruction. Notice that the missing paint at the edges of the frame resembles the original:
+<p align="center">
+  <img src="starry-night-result.png"/>
+</p>
 
 ## Troubleshooting, tips and tricks
 * If you get an "out of memory" error message try to reduce the resolution of the content image
