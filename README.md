@@ -51,7 +51,7 @@ The original style loss in ![Gatys et. al.](https://arxiv.org/abs/1508.06576) is
 
 ![\mathcal{L}_{style}(\vec{a},\vec{x})=\sum_{l=0}^{L}w_lE_l](https://latex.codecogs.com/gif.latex?%5Cdpi%7B150%7D%20%5Csmall%20%5Cmathcal%7BL%7D_%7Bstyle%7D%28%5Cvec%7Ba%7D%2C%5Cvec%7Bx%7D%29%3D%5Csum_%7Bl%3D0%7D%5E%7BL%7Dw_lE_l)
 
-This function has some downsides from an optimization perspective: The relative magnitude of gradients of the style loss from each activation layer differ significantly during optimization, requiring hand-tuned weights for each layer. But even hand tuned weights can't prevent the relative magnitude of the gradients changing during the optimization. To fix this the following formula is proposed to normalize the "dynamic range" of the gradients:
+This function has some downsides from an optimization perspective: The magnitude of gradients of the style loss from each activation layer differ significantly during optimization, requiring hand-tuned weights for each layer. But even hand tuned weights can't prevent the relative magnitude of the gradients changing during the optimization. To fix this the following formula is proposed to normalize the "dynamic range" of the gradients:
 
 ![\mathcal{L}_{style}(\vec{a},\vec{x})=\sum_{l=0}^{L}w_l\log(\alpha+E_l)](https://latex.codecogs.com/gif.latex?%5Cdpi%7B150%7D%20%5Csmall%20%5Cmathcal%7BL%7D_%7Bstyle%7D%28%5Cvec%7Ba%7D%2C%5Cvec%7Bx%7D%29%3D%5Csum_%7Bl%3D0%7D%5E%7BL%7Dw_l%5Clog%28%5Calpha&plus;E_l%29)
 
