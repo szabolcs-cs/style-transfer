@@ -1,5 +1,5 @@
 # style-transfer
-This is an efficient, high quality implementation of [neural style transfer](https://arxiv.org/abs/1508.06576) in Tensorflow, adding some tweaks of my own.
+This is an efficient implementation of [neural style transfer](https://arxiv.org/abs/1508.06576) in Tensorflow, adding some tweaks of my own.
 ## Prerequisites
 * Tensorflow (tested on 1.4)
 * The VGG-19 network from [this](https://github.com/tensorflow/models/tree/master/research/slim) page.
