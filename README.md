@@ -61,7 +61,7 @@ Where α>1 is a parameter that controls how much the gradients' magnitudes are b
 
 The original paper proposes the following normalization of the Gram matrix:
 
-![E_l=\frac{1}{4N_l^2M_l^2}\sum_{i,j}(G_{ij}^lA_{ij}^l)^2](https://latex.codecogs.com/gif.latex?%5Cdpi%7B150%7D%20%5Csmall%20E_l%3D%5Cfrac%7B1%7D%7B4N_l%5E2M_l%5E2%7D%5Csum_%7Bi%2Cj%7D%28G_%7Bij%7D%5ElA_%7Bij%7D%5El%29%5E2)
+![E_l=\frac{1}{4N_l^2M_l^2}\sum_{i,j}(G_{ij}^l-A_{ij}^l)^2](https://latex.codecogs.com/gif.latex?\dpi{150}%20\small%20E_l%3D\frac{1}{4N_l^2M_l^2}\sum_{i%2Cj}(G_{ij}^l-A_{ij}^l)^2)
 
 This seems to have problems when the dimensions of the style and content images significantly differs. To make the Gram matrix resolution-invariant the following normalization is used, where ||G||<sub>F</sub> is the [Frobenius norm](https://en.wikipedia.org/wiki/Matrix_norm#Frobenius_norm) of G:
 
