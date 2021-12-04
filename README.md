@@ -49,11 +49,11 @@ This results in a more consistent representation of style
 ## Balancing style gradients during minimization
 The original style loss in ![Gatys et. al.](https://arxiv.org/abs/1508.06576) is defined as follows:
 
-![\mathcal{L}_{style}(\vec{a},\vec{x})=\sum_{l=0}^{L}w_lE_l](https://latex.codecogs.com/gif.latex?%5Cdpi%7B150%7D%20%5Csmall%20%5Cmathcal%7BL%7D_%7Bstyle%7D%28%5Cvec%7Ba%7D%2C%5Cvec%7Bx%7D%29%3D%5Csum_%7Bl%3D0%7D%5E%7BL%7Dw_lE_l)
+![\mathcal{L}_{style}(\vec{a},\vec{x})=\sum_{l=0}^{L}w_lE_l](https://latex.codecogs.com/svg.latex?%5Cdpi%7B150%7D%20%5Csmall%20%5Cmathcal%7BL%7D_%7Bstyle%7D%28%5Cvec%7Ba%7D%2C%5Cvec%7Bx%7D%29%3D%5Csum_%7Bl%3D0%7D%5E%7BL%7Dw_lE_l)
 
 This function has some downsides from an optimization perspective: The magnitude of gradients of the style loss from each activation layer differ significantly during optimization, requiring hand-tuned weights for each layer. But even hand tuned weights can't prevent the relative magnitude of the gradients changing during the optimization. To fix this the following formula is proposed to normalize the "dynamic range" of the gradients:
 
-![\mathcal{L}_{style}(\vec{a},\vec{x})=\sum_{l=0}^{L}w_l\log(\alpha+E_l)](https://latex.codecogs.com/gif.latex?%5Cdpi%7B150%7D%20%5Csmall%20%5Cmathcal%7BL%7D_%7Bstyle%7D%28%5Cvec%7Ba%7D%2C%5Cvec%7Bx%7D%29%3D%5Csum_%7Bl%3D0%7D%5E%7BL%7Dw_l%5Clog%28%5Calpha&plus;E_l%29)
+![\mathcal{L}_{style}(\vec{a},\vec{x})=\sum_{l=0}^{L}w_l\log(\alpha+E_l)](https://latex.codecogs.com/svg.latex?%5Cdpi%7B150%7D%20%5Csmall%20%5Cmathcal%7BL%7D_%7Bstyle%7D%28%5Cvec%7Ba%7D%2C%5Cvec%7Bx%7D%29%3D%5Csum_%7Bl%3D0%7D%5E%7BL%7Dw_l%5Clog%28%5Calpha&plus;E_l%29)
 
 Where α>1 is a parameter that controls how much the gradients' magnitudes are brought together (A value of 10000 works well
 
@@ -61,11 +61,11 @@ Where α>1 is a parameter that controls how much the gradients' magnitudes are b
 
 The original paper proposes the following normalization of the Gram matrix:
 
-![E_l=\frac{1}{4N_l^2M_l^2}\sum_{i,j}(G_{ij}^l-A_{ij}^l)^2](https://latex.codecogs.com/gif.latex?\dpi{150}%20\small%20E_l%3D\frac{1}{4N_l^2M_l^2}\sum_{i%2Cj}(G_{ij}^l-A_{ij}^l)^2)
+![E_l=\frac{1}{4N_l^2M_l^2}\sum_{i,j}(G_{ij}^l-A_{ij}^l)^2](https://latex.codecogs.com/svg.latex?\dpi{150}%20\small%20E_l%3D\frac{1}{4N_l^2M_l^2}\sum_{i%2Cj}(G_{ij}^l-A_{ij}^l)^2)
 
 This seems to have problems when the dimensions of the style and content images significantly differs. To make the Gram matrix resolution-invariant the following normalization is used, where ||G||<sub>F</sub> is the [Frobenius norm](https://en.wikipedia.org/wiki/Matrix_norm#Frobenius_norm) of G:
 
-![E_l=\sum_{i,j} \left (\frac{G_{ij}}{\left \| G \right \|_F}-\frac{A_{ij}}{\left \| A \right \|_F}  \right )^2](https://latex.codecogs.com/gif.latex?%5Cdpi%7B150%7D%20%5Csmall%20E_l%3D%5Csum_%7Bi%2Cj%7D%20%5Cleft%20%28%5Cfrac%7BG_%7Bij%7D%7D%7B%5Cleft%20%5C%7C%20G%20%5Cright%20%5C%7C_F%7D-%5Cfrac%7BA_%7Bij%7D%7D%7B%5Cleft%20%5C%7C%20A%20%5Cright%20%5C%7C_F%7D%20%5Cright%20%29%5E2)
+![E_l=\sum_{i,j} \left (\frac{G_{ij}}{\left \| G \right \|_F}-\frac{A_{ij}}{\left \| A \right \|_F}  \right )^2](https://latex.codecogs.com/svg.latex?%5Cdpi%7B150%7D%20%5Csmall%20E_l%3D%5Csum_%7Bi%2Cj%7D%20%5Cleft%20%28%5Cfrac%7BG_%7Bij%7D%7D%7B%5Cleft%20%5C%7C%20G%20%5Cright%20%5C%7C_F%7D-%5Cfrac%7BA_%7Bij%7D%7D%7B%5Cleft%20%5C%7C%20A%20%5Cright%20%5C%7C_F%7D%20%5Cright%20%29%5E2)
 
 ## Examples
 Using the following image as the style image:
